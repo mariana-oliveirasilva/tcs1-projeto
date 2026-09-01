@@ -26,7 +26,9 @@ Veja mais detalhes em [`docs/proposta.md`](docs/proposta.md).
 *(Em breve — o projeto ainda está na fase de proposta e especificação.)*
 
 ## Funcionalidades implementadas
-*(Nenhuma ainda — projeto na Etapa 01: proposta e especificação.)*
+Protótipo estrutural em HTML/CSS (Etapa 02) com as telas principais do
+sistema. Veja a lista completa de funcionalidades, páginas criadas e
+decisões de estrutura HTML em [`docs/etapa02.md`](docs/etapa02.md).
 
 ## Limitações conhecidas
 *(A definir conforme o desenvolvimento avança.)*
