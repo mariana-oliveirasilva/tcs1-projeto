@@ -10,12 +10,14 @@ Goodreads ou MyAnimeList permitem que esse cenário seja diferente, entretanto
 limitam o serviço ou para livros ou para mangás, nem sempre focando na conexão
 entre os leitores. O InkCircle resolve isso oferecendo um espaço que une as duas 
 mídias num só lugar, com foco no lado social: publicar comentários sobre obras já 
-lidas e encontrar outros leitores com interesses semelhantes.
+lidas e encontrar outros leitores com interesses semelhantes. Além disso, dá a 
+oportunidade do usuário publicar obras autorais e descobrir qual público atrai.
 
 ## Público-alvo
 Leitores de livros e mangás que gostam de registrar e compartilhar suas
 opiniões sobre as obras que leram, e que têm interesse em encontrar outros
-leitores com gostos parecidos.
+leitores com gostos parecidos. Também abrange autores independentes que
+queiram publicar suas próprias obras na plataforma.
 
 ## Objetivo principal da aplicação
 Permitir que o usuário se cadastre, monte um perfil de leitor, publique
@@ -29,6 +31,8 @@ encontre outros perfis com interesses de leitura semelhantes.
    estrelas e comentário em texto.
 4. Edição e exclusão de avaliações publicadas pelo próprio usuário.
 5. Busca de outros perfis de usuários na plataforma.
+6. Publicação de obras autorais próprias pelo usuário, disponíveis
+   gratuitamente para leitura e avaliação pelos demais usuários.
 
 ## Entidades / conceitos do domínio
 1. **Usuário** — conta cadastrada na plataforma, com dados de login e perfil.
@@ -45,6 +49,8 @@ encontre outros perfis com interesses de leitura semelhantes.
    obra e publicar nota + comentário.
 4. **Tela de busca de perfis** — permite procurar e visualizar outros
    usuários da plataforma.
+5. **Tela de publicação de obra autoral** — formulário para o usuário
+   cadastrar uma obra própria na plataforma.
 
 ## Operações
 1. Criar conta de usuário.
@@ -54,6 +60,7 @@ encontre outros perfis com interesses de leitura semelhantes.
 5. Excluir uma avaliação existente.
 6. Buscar usuários por nome/critério.
 7. Listar avaliações de um perfil específico.
+8.  Publicar uma obra autoral vinculada ao usuário.
 
 ## Tecnologias
 - **Cliente:** React, HTML, CSS, JavaScript

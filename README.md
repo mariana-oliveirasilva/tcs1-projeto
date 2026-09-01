@@ -13,6 +13,8 @@ Software I (TCS1).
 ## Problema que resolve
 Voltado para leitores que visam reservar um espaço para suas avaliações pessoais
 sobre livros e mangás e descobrir outros leitores com gostos parecidos.
+O usuário também pode publicar obras autorais próprias, disponíveis
+gratuitamente para leitura e avaliação pelos demais usuários da plataforma.
 Veja mais detalhes em [`docs/proposta.md`](docs/proposta.md).
 
 ## Tecnologias
