@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Criar conta — InkCircle</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand"><svg class="logo-icone" viewBox="0 0 48 44" width="30" height="30" aria-hidden="true"><g transform="rotate(-2 24 34)"><rect x="4" y="30" width="40" height="8" rx="3" fill="#A9C77A"/></g><g transform="rotate(1.5 24 25)"><rect x="8" y="21" width="32" height="7" rx="3" fill="#E9A9BE"/></g><g transform="translate(9 3)"><path d="M15 2 L15 20 Q8 17 1 20 L1 4 Q8 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2 L15 20 Q22 17 29 20 L29 4 Q22 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/></g><path d="M40 4l1.6 4L46 9.6l-4.4 1.6L40 15l-1.6-4.4L34 9.6l4.4-1.6Z" fill="#5E7A32"/><path d="M4 18l1.2 3L8 22.2l-2.8 1L4 26l-1.2-2.8L0 22.2l2.8-1Z" fill="#4B2318"/></svg><span class="ink">Ink</span><span class="circle">Circle</span></p>
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Avaliações</a></li>
+          <li><a href="busca.html">Descobrir</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="entrar.html">Entrar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <p class="aviso-etapa" style="max-width: 880px; margin-left: auto; margin-right: auto;">
+        Protótipo estrutural (Etapa 02) — este formulário ainda não
+        envia dados a nenhum servidor.
+      </p>
+
+      <div class="auth-layout">
+
+        <figure class="auth-ilustracao" aria-hidden="true">
+          <svg viewBox="0 0 280 240" width="100%" role="presentation">
+            <ellipse cx="140" cy="205" rx="95" ry="14" fill="#A9C77A" opacity="0.35"/>
+
+            <g transform="rotate(3 140 190)">
+              <rect x="40" y="172" width="200" height="30" rx="7" fill="#BFDCE8"/>
+            </g>
+            <g transform="rotate(-2 140 160)">
+              <rect x="55" y="142" width="180" height="28" rx="7" fill="#A9C77A"/>
+            </g>
+            <g transform="rotate(1.5 140 132)">
+              <rect x="65" y="114" width="160" height="26" rx="7" fill="#E9A9BE"/>
+            </g>
+
+            <g transform="translate(70 30)">
+              <rect x="10" y="10" width="120" height="86" rx="6" fill="#FBF3E7" stroke="#4B2318" stroke-width="2.2"/>
+              <line x1="70" y1="34" x2="70" y2="72" stroke="#5E7A32" stroke-width="4" stroke-linecap="round"/>
+              <line x1="51" y1="53" x2="89" y2="53" stroke="#5E7A32" stroke-width="4" stroke-linecap="round"/>
+            </g>
+
+            <path d="M226 46l3.4 8.6L238 58l-8.6 3.4L226 70l-3.4-8.6L214 58l8.6-3.4Z" fill="#5E7A32"/>
+            <path d="M44 96l2.4 6L52.4 104l-6 2.4L44 112.4l-2.4-6L35.6 104.4l6-2.4Z" fill="#4B2318"/>
+            <circle cx="234" cy="100" r="4" fill="#E9A9BE"/>
+            <circle cx="30" cy="60" r="3.2" fill="#A9C77A"/>
+          </svg>
+        </figure>
+
+        <div class="auth-formulario">
+          <h1>Crie sua conta</h1>
+
+          <nav class="abas-auth" aria-label="Alternar entre login e cadastro">
+            <a href="entrar.html">Entrar</a>
+            <a href="criar-conta.html" aria-current="true">Criar conta</a>
+          </nav>
+
+          <form class="card-form" action="#" method="post">
+            <div class="campo">
+              <label for="cad-nome">Nome de exibição</label>
+              <input type="text" id="cad-nome" name="nome" required autocomplete="name">
+            </div>
+            <div class="campo">
+              <label for="cad-usuario">Nome de usuário</label>
+              <input type="text" id="cad-usuario" name="usuario" required autocomplete="username">
+              <p class="campo-ajuda">Será usado no seu perfil, ex: @anaclara</p>
+            </div>
+            <div class="campo">
+              <label for="cad-email">E-mail</label>
+              <input type="email" id="cad-email" name="email" required autocomplete="email">
+            </div>
+            <div class="campo">
+              <label for="cad-senha">Senha</label>
+              <input type="password" id="cad-senha" name="senha" required autocomplete="new-password">
+            </div>
+            <button type="submit">Criar minha conta</button>
+          </form>
+
+          <p style="margin-top: 1.25rem; font-size: 0.9rem;">
+            Já tem conta? <a href="entrar.html">Entrar</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><span class="ink">Ink</span><span class="circle">Circle</span> — projeto da disciplina TCS1</p>
+      <p><a href="index.html">Voltar ao início</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

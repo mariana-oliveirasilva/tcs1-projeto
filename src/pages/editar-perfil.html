@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar perfil — InkCircle</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand"><svg class="logo-icone" viewBox="0 0 48 44" width="30" height="30" aria-hidden="true"><g transform="rotate(-2 24 34)"><rect x="4" y="30" width="40" height="8" rx="3" fill="#A9C77A"/></g><g transform="rotate(1.5 24 25)"><rect x="8" y="21" width="32" height="7" rx="3" fill="#E9A9BE"/></g><g transform="translate(9 3)"><path d="M15 2 L15 20 Q8 17 1 20 L1 4 Q8 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2 L15 20 Q22 17 29 20 L29 4 Q22 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/></g><path d="M40 4l1.6 4L46 9.6l-4.4 1.6L40 15l-1.6-4.4L34 9.6l4.4-1.6Z" fill="#5E7A32"/><path d="M4 18l1.2 3L8 22.2l-2.8 1L4 26l-1.2-2.8L0 22.2l2.8-1Z" fill="#4B2318"/></svg><span class="ink">Ink</span><span class="circle">Circle</span></p>
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Avaliações</a></li>
+          <li><a href="busca.html">Descobrir</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="perfil.html">Meu perfil</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <p class="aviso-etapa">
+        Protótipo estrutural (Etapa 02) — este formulário ainda não
+        salva as alterações em nenhum banco de dados.
+      </p>
+
+      <h1 style="text-align:center; display:flex; align-items:center; justify-content:center; gap:0.6rem;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B2318" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        Editar perfil
+      </h1>
+
+      <form class="card-form wide" action="#" method="post">
+
+        <fieldset>
+          <legend>Informações do perfil</legend>
+
+          <div class="campo">
+            <label for="editar-nome">Nome</label>
+            <input type="text" id="editar-nome" name="nome" value="Ana Cavalcante" required>
+          </div>
+
+          <div class="campo">
+            <label for="editar-usuario">Usuário</label>
+            <input type="text" id="editar-usuario" name="usuario" value="anacaval" required>
+          </div>
+
+          <div class="campo">
+            <label for="editar-localizacao">Localização <span class="opcional">(opcional)</span></label>
+            <input type="text" id="editar-localizacao" name="localizacao" value="São Paulo, SP">
+          </div>
+
+          <div class="campo">
+            <label for="editar-site">Site <span class="opcional">(opcional)</span></label>
+            <input type="url" id="editar-site" name="site" placeholder="https://...">
+          </div>
+
+          <div class="campo">
+            <label for="editar-bio">Bio</label>
+            <textarea id="editar-bio" name="bio" placeholder="Conte um pouco sobre você como leitor...">Leitora voraz de fantasia e mangá. Amo histórias que constroem mundos inteiros — sejam em prosa densa ou em quadrinhos. Professora de inglês nas horas vagas.</textarea>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Gêneros preferidos</legend>
+          <p class="campo-ajuda" style="margin-bottom: 0.75rem;">
+            Selecione os gêneros que mais combinam com você.
+          </p>
+          <div class="campo">
+            <label><input type="checkbox" name="generos" value="fantasy" checked> Fantasy</label>
+            <label><input type="checkbox" name="generos" value="manga" checked> Mangá</label>
+            <label><input type="checkbox" name="generos" value="classicos" checked> Clássicos</label>
+            <label><input type="checkbox" name="generos" value="scifi" checked> Sci-Fi</label>
+            <label><input type="checkbox" name="generos" value="darkfantasy" checked> Dark Fantasy</label>
+            <label><input type="checkbox" name="generos" value="romance"> Romance</label>
+            <label><input type="checkbox" name="generos" value="terror"> Terror</label>
+          </div>
+        </fieldset>
+
+        <div class="acoes-form">
+          <button type="submit">Salvar</button>
+          <a href="perfil.html" class="botao secundario">Cancelar</a>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><span class="ink">Ink</span><span class="circle">Circle</span> — projeto da disciplina TCS1</p>
+      <p><a href="index.html">Voltar ao início</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

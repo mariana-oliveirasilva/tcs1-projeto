@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descobrir leitores — InkCircle</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand"><svg class="logo-icone" viewBox="0 0 48 44" width="30" height="30" aria-hidden="true"><g transform="rotate(-2 24 34)"><rect x="4" y="30" width="40" height="8" rx="3" fill="#A9C77A"/></g><g transform="rotate(1.5 24 25)"><rect x="8" y="21" width="32" height="7" rx="3" fill="#E9A9BE"/></g><g transform="translate(9 3)"><path d="M15 2 L15 20 Q8 17 1 20 L1 4 Q8 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2 L15 20 Q22 17 29 20 L29 4 Q22 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/></g><path d="M40 4l1.6 4L46 9.6l-4.4 1.6L40 15l-1.6-4.4L34 9.6l4.4-1.6Z" fill="#5E7A32"/><path d="M4 18l1.2 3L8 22.2l-2.8 1L4 26l-1.2-2.8L0 22.2l2.8-1Z" fill="#4B2318"/></svg><span class="ink">Ink</span><span class="circle">Circle</span></p>
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html">Avaliações</a></li>
+          <li><a href="busca.html" aria-current="page">Descobrir</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="perfil.html">Meu perfil</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <p class="aviso-etapa">
+        Protótipo estrutural (Etapa 02) — a busca abaixo não está
+        conectada a nenhum banco de dados ainda.
+      </p>
+
+      <h1>Descobrir leitores</h1>
+      <p class="lede">Encontre pessoas com gostos parecidos com os seus.</p>
+
+      <form class="busca-bar" role="search" action="#" method="get">
+        <label for="busca-perfil" class="visually-hidden">Buscar por nome ou obra</label>
+        <input type="search" id="busca-perfil" name="q" placeholder="Buscar por nome ou obra em comum...">
+        <button type="submit">Buscar</button>
+      </form>
+
+      <section aria-labelledby="titulo-resultados">
+        <h2 id="titulo-resultados" class="titulo-icone">
+          <span class="icone-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4B2318" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
+          Leitores com gostos parecidos
+        </h2>
+        <hr class="divisor-ondulado" aria-hidden="true">
+
+        <div class="grid-perfis">
+
+          <article class="perfil-card">
+            <div class="avatar-placeholder">RP</div>
+            <div>
+              <h3>Renata Prado</h3>
+              <p class="autor-avaliacao">@renatap &middot; 34 avaliações</p>
+              <p class="obras-comuns">4 obras em comum com você</p>
+            </div>
+          </article>
+
+          <article class="perfil-card">
+            <div class="avatar-placeholder alt">MF</div>
+            <div>
+              <h3>Marcelo Ferreira</h3>
+              <p class="autor-avaliacao">@marcelof &middot; 19 avaliações</p>
+              <p class="obras-comuns">3 obras em comum com você</p>
+            </div>
+          </article>
+
+          <article class="perfil-card">
+            <div class="avatar-placeholder alt2">JS</div>
+            <div>
+              <h3>Julia Santos</h3>
+              <p class="autor-avaliacao">@juliasantos &middot; 51 avaliações</p>
+              <p class="obras-comuns">2 obras em comum com você</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><span class="ink">Ink</span><span class="circle">Circle</span> — projeto da disciplina TCS1</p>
+      <p><a href="../docs/etapa02.md">Sobre este protótipo</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

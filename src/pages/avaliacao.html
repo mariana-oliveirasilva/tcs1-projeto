@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova avaliação — InkCircle</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand"><svg class="logo-icone" viewBox="0 0 48 44" width="30" height="30" aria-hidden="true"><g transform="rotate(-2 24 34)"><rect x="4" y="30" width="40" height="8" rx="3" fill="#A9C77A"/></g><g transform="rotate(1.5 24 25)"><rect x="8" y="21" width="32" height="7" rx="3" fill="#E9A9BE"/></g><g transform="translate(9 3)"><path d="M15 2 L15 20 Q8 17 1 20 L1 4 Q8 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2 L15 20 Q22 17 29 20 L29 4 Q22 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/></g><path d="M40 4l1.6 4L46 9.6l-4.4 1.6L40 15l-1.6-4.4L34 9.6l4.4-1.6Z" fill="#5E7A32"/><path d="M4 18l1.2 3L8 22.2l-2.8 1L4 26l-1.2-2.8L0 22.2l2.8-1Z" fill="#4B2318"/></svg><span class="ink">Ink</span><span class="circle">Circle</span></p>
+      <nav class="primary-nav" aria-label="Navegação principal">
+        <ul>
+          <li><a href="index.html" aria-current="page">Avaliações</a></li>
+          <li><a href="busca.html">Descobrir</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="perfil.html">Meu perfil</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <p class="aviso-etapa">
+        Protótipo estrutural (Etapa 02) — este formulário ainda não
+        salva a avaliação em nenhum banco de dados.
+      </p>
+
+      <h1 style="display:flex; align-items:center; gap:0.6rem;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B2318" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-6 0-14 4-16 14 8 0 14-6 16-14Z"/><line x1="4" y1="20" x2="12" y2="12"/></svg>
+        Publicar avaliação
+      </h1>
+      <p class="lede">Registre o que você leu, dê uma nota e conte sua impressão.</p>
+
+      <form class="card-form wide" action="#" method="post">
+
+        <fieldset>
+          <legend>Sobre a obra</legend>
+
+          <div class="campo">
+            <label for="obra">Título da obra</label>
+            <input type="text" id="obra" name="obra" required list="obras-sugeridas" placeholder="Ex: Berserk, 1984...">
+            <datalist id="obras-sugeridas">
+              <option value="Berserk">
+              <option value="Vagabond">
+              <option value="1984">
+              <option value="Cem Anos de Solidão">
+            </datalist>
+          </div>
+
+          <div class="campo">
+            <label for="tipo-obra">Tipo</label>
+            <select id="tipo-obra" name="tipo-obra" required>
+              <option value="">Selecione...</option>
+              <option value="livro">Livro</option>
+              <option value="manga">Mangá</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Sua avaliação</legend>
+
+          <div class="campo">
+            <span id="rotulo-nota">Nota</span>
+            <div class="nota-estrelas" role="radiogroup" aria-labelledby="rotulo-nota">
+              <label><input type="radio" name="nota" value="1"> ★</label>
+              <label><input type="radio" name="nota" value="2"> ★★</label>
+              <label><input type="radio" name="nota" value="3"> ★★★</label>
+              <label><input type="radio" name="nota" value="4"> ★★★★</label>
+              <label><input type="radio" name="nota" value="5"> ★★★★★</label>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label for="comentario">Comentário</label>
+            <textarea id="comentario" name="comentario" required placeholder="O que você achou dessa obra?"></textarea>
+          </div>
+        </fieldset>
+
+        <div class="acoes-form">
+          <button type="submit">Publicar avaliação</button>
+          <a href="index.html" class="botao secundario">Cancelar</a>
+        </div>
+
+      </form>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><span class="ink">Ink</span><span class="circle">Circle</span> — projeto da disciplina TCS1</p>
+      <p><a href="../docs/etapa02.md">Sobre este protótipo</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
