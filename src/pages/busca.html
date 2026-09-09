@@ -26,19 +26,30 @@
   <main>
     <div class="wrap">
 
-      <p class="aviso-etapa">
-        Protótipo estrutural (Etapa 02) — a busca abaixo não está
-        conectada a nenhum banco de dados ainda.
-      </p>
+      <div style="position: relative;">
 
-      <h1>Descobrir leitores</h1>
-      <p class="lede">Encontre pessoas com gostos parecidos com os seus.</p>
+        <div style="display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap; position:relative; z-index:1;">
+          <div>
+            <h1>Descobrir leitores</h1>
+            <p class="lede">Encontre pessoas com gostos parecidos com os seus.</p>
+          </div>
+          <svg width="86" height="72" viewBox="0 0 86 72" aria-hidden="true" style="flex-shrink:0;">
+            <circle cx="24" cy="30" r="20" fill="#E9A9BE"/>
+            <circle cx="62" cy="30" r="20" fill="#BFDCE8"/>
+            <g transform="translate(31 18)">
+              <path d="M12 2 L12 24 Q7 21 2 24 L2 6 Q7 3 12 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M12 2 L12 24 Q17 21 22 24 L22 6 Q17 3 12 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/>
+            </g>
+            <path d="M80 8l1.6 4L86 13.6l-4.4 1.6L80 19l-1.6-4.4L74 13.6l4.4-1.6Z" fill="#5E7A32"/>
+          </svg>
+        </div>
 
-      <form class="busca-bar" role="search" action="#" method="get">
-        <label for="busca-perfil" class="visually-hidden">Buscar por nome ou obra</label>
-        <input type="search" id="busca-perfil" name="q" placeholder="Buscar por nome ou obra em comum...">
-        <button type="submit">Buscar</button>
-      </form>
+        <form class="busca-bar" role="search" action="#" method="get" style="position:relative; z-index:1;">
+          <label for="busca-perfil" class="visually-hidden">Buscar por nome ou obra</label>
+          <input type="search" id="busca-perfil" name="q" placeholder="Buscar por nome ou obra em comum...">
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
 
       <section aria-labelledby="titulo-resultados">
         <h2 id="titulo-resultados" class="titulo-icone">
@@ -57,24 +68,35 @@
               <h3>Renata Prado</h3>
               <p class="autor-avaliacao">@renatap &middot; 34 avaliações</p>
               <p class="obras-comuns">4 obras em comum com você</p>
+              <ul class="tags-mini" aria-label="Gêneros em comum">
+                <li class="fantasia">Fantasy</li>
+                <li class="manga">Mangá</li>
+              </ul>
             </div>
           </article>
 
-          <article class="perfil-card">
+          <article class="perfil-card destaque-2">
             <div class="avatar-placeholder alt">MF</div>
             <div>
               <h3>Marcelo Ferreira</h3>
               <p class="autor-avaliacao">@marcelof &middot; 19 avaliações</p>
               <p class="obras-comuns">3 obras em comum com você</p>
+              <ul class="tags-mini" aria-label="Gêneros em comum">
+                <li class="classicos">Clássicos</li>
+                <li class="scifi">Sci-Fi</li>
+              </ul>
             </div>
           </article>
 
-          <article class="perfil-card">
+          <article class="perfil-card destaque-3">
             <div class="avatar-placeholder alt2">JS</div>
             <div>
               <h3>Julia Santos</h3>
               <p class="autor-avaliacao">@juliasantos &middot; 51 avaliações</p>
               <p class="obras-comuns">2 obras em comum com você</p>
+              <ul class="tags-mini" aria-label="Gêneros em comum">
+                <li class="darkfantasy">Dark Fantasy</li>
+              </ul>
             </div>
           </article>
 

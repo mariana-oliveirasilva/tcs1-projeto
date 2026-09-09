@@ -243,12 +243,16 @@ section > h2 {
 article.avaliacao-card {
   background: var(--cream);
   border: 2px solid var(--maroon);
+  border-left: 5px solid var(--green);
   border-radius: var(--radius);
   padding: 1.1rem 1.35rem;
   display: flex;
   gap: 0.9rem;
   align-items: center;
 }
+
+article.avaliacao-card.destaque-2 { border-left-color: var(--maroon); }
+article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
 
 .avaliacao-card .avatar-placeholder { flex-shrink: 0; }
 .avaliacao-card .info { flex: 1; min-width: 0; }
@@ -324,6 +328,8 @@ article.avaliacao-card {
 .perfil-banner {
   position: relative;
   height: 180px;
+  margin: 0;
+  width: 100%;
   background-image:
     linear-gradient(rgba(75, 35, 24, 0.15), rgba(75, 35, 24, 0.35)),
     url('../img/estante-fundo.jpg');
@@ -440,11 +446,11 @@ article.avaliacao-card {
   color: var(--maroon);
 }
 
-.tags-genero .fantasia { background: var(--tag-fantasia); }
-.tags-genero .manga { background: var(--tag-manga); }
-.tags-genero .classicos { background: var(--tag-classicos); }
-.tags-genero .scifi { background: var(--tag-scifi); }
-.tags-genero .darkfantasy { background: var(--tag-darkfantasy); }
+.tags-genero .fantasia, .tags-mini .fantasia { background: var(--tag-fantasia); }
+.tags-genero .manga, .tags-mini .manga { background: var(--tag-manga); }
+.tags-genero .classicos, .tags-mini .classicos { background: var(--tag-classicos); }
+.tags-genero .scifi, .tags-mini .scifi { background: var(--tag-scifi); }
+.tags-genero .darkfantasy, .tags-mini .darkfantasy { background: var(--tag-darkfantasy); }
 
 .perfil-cabecalho {
   display: flex;
@@ -490,12 +496,33 @@ article.avaliacao-card {
 
 article.perfil-card {
   border: 2px solid var(--maroon);
+  border-left: 5px solid var(--green);
   border-radius: var(--radius);
   background: var(--cream);
   padding: 1.1rem;
   display: flex;
   gap: 0.9rem;
   align-items: flex-start;
+}
+
+article.perfil-card.destaque-2 { border-left-color: var(--maroon); }
+article.perfil-card.destaque-3 { border-left-color: var(--pink-deep); }
+
+.perfil-card .tags-mini {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0;
+  margin: 0.5rem 0 0 0;
+}
+
+.perfil-card .tags-mini li {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  color: var(--maroon);
 }
 
 .perfil-card .obras-comuns {
@@ -697,8 +724,179 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
   border-radius: 6px;
 }
 
-@media (max-width: 640px) {
-  h1 { font-size: 2rem; }
-  .site-header .wrap { flex-direction: column; align-items: flex-start; }
-  .perfil-cabecalho { flex-direction: column; align-items: flex-start; }
+/* ===================================================================
+   RESPONSIVIDADE — Etapa 03
+
+   Estratégia: desktop-first com sobrescrita — o CSS acima já é o
+   layout padrão (desktop); as regras abaixo entram em vigor conforme
+   a tela fica menor, ajustando o que precisa mudar.
+
+   Breakpoint 1 — Tablet (até 900px): reduz espaçamentos, encolhe a
+   ilustração das telas de login/cadastro e o banner do perfil,
+   reorganiza os grids de cards.
+
+   Breakpoint 2 — Smartphone (até 600px): empilha o cabeçalho, os
+   botões de ação e a barra de busca; os grids de perfil/obras caem
+   para 1 coluna; os cards de avaliação/perfil empilham o avatar
+   sobre o texto; reduz a tipografia principal.
+   =================================================================== */
+
+/* ---------- Breakpoint 1: Tablet (até 900px) ---------- */
+@media (max-width: 900px) {
+  .wrap {
+    padding: 0 1.1rem;
+  }
+
+  .auth-layout {
+    gap: 1.5rem;
+  }
+
+  .auth-ilustracao {
+    max-width: 220px;
+  }
+
+  .perfil-banner {
+    height: 150px;
+  }
+
+  .grid-perfis,
+  .grid-obras {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .stat-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---------- Breakpoint 2: Smartphone (até 600px) ---------- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .site-header .wrap {
+    flex-wrap: wrap;
+    row-gap: 0.6rem;
+  }
+
+  .site-header .brand {
+    flex: 1 1 100%;
+  }
+
+  nav.primary-nav {
+    flex: 0 1 auto;
+  }
+
+  nav.primary-nav ul {
+    gap: 1rem;
+  }
+
+  .header-actions {
+    flex: 0 1 auto;
+    justify-content: flex-end;
+  }
+
+  .hero .wrap {
+    flex-direction: column;
+  }
+
+  .hero-acoes {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-acoes .botao {
+    text-align: center;
+  }
+
+  .auth-layout {
+    flex-direction: column;
+  }
+
+  .auth-ilustracao {
+    max-width: 160px;
+    order: -1;
+  }
+
+  .auth-formulario {
+    max-width: 100%;
+  }
+
+  form.card-form,
+  form.card-form.wide {
+    max-width: 100%;
+    padding: 1.25rem;
+  }
+
+  .acoes-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .campo label:has(input[type="checkbox"]) {
+    display: flex;
+    margin: 0 0 0.5rem 0;
+  }
+
+  form.busca-bar {
+    flex-direction: column;
+  }
+
+  form.busca-bar button {
+    width: 100%;
+  }
+
+  .grid-perfis,
+  .grid-obras {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stat-cards .stat-card {
+    padding: 0.6rem;
+  }
+
+  .stat-cards .stat-card .numero {
+    font-size: 1.2rem;
+  }
+
+  .perfil-cabecalho {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .perfil-avatar-quadrado {
+    position: static;
+    width: 64px;
+    height: 64px;
+    font-size: 1.4rem;
+    margin: -32px 0 0.8rem 1rem;
+  }
+
+  .perfil-acoes {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin-top: 0;
+  }
+
+  .perfil-acoes .botao {
+    text-align: center;
+  }
+
+  article.avaliacao-card,
+  article.perfil-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tags-genero,
+  .tags-mini {
+    gap: 0.4rem;
+  }
 }
