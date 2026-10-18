@@ -1,3 +1,5 @@
+/* InkCircle — estilos */
+
 /* ===================================================================
    InkCircle — folha de estilo compartilhada
    Paleta: rosa suave + verde-oliva + marrom escuro (tinta)
@@ -7,6 +9,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap');
 
+/* CORES GERAIS */
 :root {
   --pink: #F3CFDA;
   --pink-deep: #E9A9BE;
@@ -29,6 +32,7 @@
 
 html { scroll-behavior: smooth; }
 
+/* PÁGINA INTEIRA */
 body {
   margin: 0;
   background: linear-gradient(180deg, var(--pink) 0%, var(--pink) 45%, #F5DCE5 75%, #F8E6EC 100%);
@@ -45,7 +49,9 @@ h1, h2, h3, .brand {
   margin: 0 0 0.5em 0;
 }
 
+/* TÍTULO PRINCIPAL */
 h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
+/* TÍTULOS DAS SEÇÕES */
 h2 { font-size: 1.6rem; }
 h3 { font-size: 1.15rem; margin-bottom: 0.25em; }
 
@@ -62,6 +68,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
+/* CONTÊINER GERAL */
 .wrap {
   max-width: 960px;
   margin: 0 auto;
@@ -75,6 +82,7 @@ header.site-header {
   z-index: 2;
 }
 
+/* CABEÇALHO INTEIRO */
 .site-header .wrap {
   display: flex;
   align-items: center;
@@ -85,6 +93,7 @@ header.site-header {
   gap: 0.75rem;
 }
 
+/* MARCA INKCIRCLE */
 .brand {
   font-size: 1.4rem;
   margin: 0;
@@ -96,6 +105,7 @@ header.site-header {
 .brand .ink { color: var(--maroon); }
 .brand .circle { color: var(--green); }
 
+/* MENU AVALIAÇÕES / DESCOBRIR */
 nav.primary-nav ul {
   list-style: none;
   display: flex;
@@ -118,6 +128,7 @@ nav.primary-nav a[aria-current="page"] {
   border-bottom-color: var(--green);
 }
 
+/* ENTRAR / CADASTRAR */
 .header-actions {
   display: flex;
   gap: 0.75rem;
@@ -125,6 +136,7 @@ nav.primary-nav a[aria-current="page"] {
   font-size: 0.9rem;
 }
 
+/* SEÇÃO DE DESTAQUE INICIAL */
 .hero {
   position: relative;
   padding: 3.5rem 0 3rem;
@@ -136,6 +148,7 @@ nav.primary-nav a[aria-current="page"] {
   background-position: center;
 }
 
+/* TEXTO E CARTÕES DA APRESENTAÇÃO */
 .hero .wrap {
   position: relative;
   z-index: 1;
@@ -171,6 +184,7 @@ nav.primary-nav a[aria-current="page"] {
   max-width: 42ch;
 }
 
+/* BOTÕES CRIAR MEU PERFIL / VER AVALIAÇÕES */
 .hero-acoes {
   display: flex;
   gap: 0.75rem;
@@ -178,6 +192,7 @@ nav.primary-nav a[aria-current="page"] {
   flex-wrap: wrap;
 }
 
+/* CARTÕES DECORATIVOS DA APRESENTAÇÃO */
 .hero-cards {
   flex: 1;
   min-width: 260px;
@@ -238,8 +253,10 @@ section > h2 {
   pointer-events: none;
 }
 
+/* LISTA DE AVALIAÇÕES RECENTES E DO PERFIL */
 .feed { display: flex; flex-direction: column; gap: 1rem; }
 
+/* CADA CARTÃO DE AVALIAÇÃO */
 article.avaliacao-card {
   background: var(--cream);
   border: 2px solid var(--maroon);
@@ -305,6 +322,7 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
   color: var(--green);
 }
 
+/* AVATAR CIRCULAR DOS CARTÕES */
 .avatar-placeholder {
   width: 42px;
   height: 42px;
@@ -323,8 +341,9 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
 .avatar-placeholder.alt { background: var(--maroon); }
 .avatar-placeholder.alt2 { background: var(--pink-deep); color: var(--maroon); }
 
-/* ---------- perfil: banner de capa ---------- */
+/* ---------- perfil */
 
+/* CAPA DO PERFIL */
 .perfil-banner {
   position: relative;
   height: 180px;
@@ -343,6 +362,7 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
   border-bottom: 1px solid var(--line);
 }
 
+/* AVATAR DO PERFIL */
 .perfil-avatar-quadrado {
   position: absolute;
   top: -40px;
@@ -361,6 +381,7 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
   font-size: 1.9rem;
 }
 
+/* EDITAR PERFIL / COMPARTILHAR */
 .perfil-acoes {
   display: flex;
   justify-content: flex-end;
@@ -395,8 +416,9 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
 
 .perfil-stats-linha strong { color: var(--maroon); }
 
-/* ---------- perfil: cards de estatística ---------- */
+/* ---------- perfil */
 
+/* ESTATÍSTICAS DO PERFIL */
 .stat-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -427,7 +449,7 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
   margin: 0;
 }
 
-/* ---------- perfil: tags de gênero preferido ---------- */
+/* ---------- perfil */
 
 .tags-genero {
   list-style: none;
@@ -482,18 +504,21 @@ article.avaliacao-card.destaque-3 { border-left-color: var(--pink-deep); }
   margin: 0;
 }
 
+/* GRADE DE OBRAS AUTORAIS */
 .grid-obras {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.1rem;
 }
 
+/* GRADE DE LEITORES */
 .grid-perfis {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 1.1rem;
 }
 
+/* CADA CARTÃO DE LEITOR */
 article.perfil-card {
   border: 2px solid var(--maroon);
   border-left: 5px solid var(--green);
@@ -531,6 +556,7 @@ article.perfil-card.destaque-3 { border-left-color: var(--pink-deep); }
   margin-top: 0.3rem;
 }
 
+/* FORMULÁRIO PADRÃO */
 form.card-form {
   background: var(--cream);
   border: 2px solid var(--maroon);
@@ -541,6 +567,7 @@ form.card-form {
   position: relative;
 }
 
+/* FORMULÁRIO LARGO (AVALIAÇÃO, EDIÇÃO, OBRA) */
 form.card-form.wide { max-width: 640px; }
 
 /* fita decorativa no topo do card */
@@ -567,6 +594,7 @@ form.card-form::before {
 
 /* ---------- painel ilustrado de autenticação ---------- */
 
+/* LOGIN / CADASTRO */
 .auth-layout {
   display: flex;
   align-items: center;
@@ -577,6 +605,7 @@ form.card-form::before {
   justify-content: center;
 }
 
+/* ILUSTRAÇÃO DO LOGIN / CADASTRO */
 .auth-ilustracao {
   flex: 1;
   min-width: 240px;
@@ -585,6 +614,7 @@ form.card-form::before {
   justify-content: center;
 }
 
+/* ÁREA DO FORMULÁRIO DE LOGIN / CADASTRO */
 .auth-formulario {
   flex: 1;
   min-width: 280px;
@@ -604,8 +634,10 @@ fieldset legend {
   padding: 0 0 0.75rem 0;
 }
 
+/* ESPAÇO ENTRE CAMPOS */
 .campo { margin-bottom: 1.1rem; }
 
+/* RÓTULOS DOS CAMPOS */
 label {
   display: block;
   font-size: 0.9rem;
@@ -631,6 +663,7 @@ input[type="password"],
 input[type="search"],
 input[type="url"],
 select,
+/* CAIXA DE COMENTÁRIO / BIO / SINOPSE */
 textarea {
   width: 100%;
   font: inherit;
@@ -641,10 +674,12 @@ textarea {
   border-radius: 6px;
 }
 
+/* CAIXA DE COMENTÁRIO / BIO / SINOPSE */
 textarea { resize: vertical; min-height: 6rem; }
 
 .campo-ajuda { font-size: 0.8rem; color: var(--maroon-soft); margin-top: 0.3rem; }
 
+/* GRUPO DE ESTRELAS */
 .nota-estrelas { display: flex; gap: 0.4rem; font-size: 1.4rem; }
 
 .nota-estrelas label {
@@ -656,6 +691,7 @@ textarea { resize: vertical; min-height: 6rem; }
   cursor: pointer;
 }
 
+/* BOTÕES GERAIS */
 button, .botao {
   font: inherit;
   font-weight: 600;
@@ -667,6 +703,7 @@ button, .botao {
   cursor: pointer;
 }
 
+/* BOTÃO COM MOUSE SOBRE ELE */
 button:hover, .botao:hover { background: #4a6127; }
 
 .botao.secundario {
@@ -677,6 +714,7 @@ button:hover, .botao:hover { background: #4a6127; }
 
 .botao.secundario:hover { background: var(--maroon); color: var(--cream); }
 
+/* ENVIO / CANCELAR DOS FORMULÁRIOS */
 .acoes-form {
   display: flex;
   gap: 0.75rem;
@@ -701,9 +739,11 @@ button:hover, .botao:hover { background: #4a6127; }
   font-weight: 600;
 }
 
+/* CAMPO E BOTÃO BUSCAR */
 form.busca-bar { display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap; }
 form.busca-bar input { flex: 1; min-width: 200px; }
 
+/* RODAPÉ */
 footer.site-footer {
   border-top: 2px solid var(--maroon);
   background: var(--cream);
@@ -724,57 +764,52 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
   border-radius: 6px;
 }
 
-/* ===================================================================
-   RESPONSIVIDADE — Etapa 03
+/* RESPONSIVIDADE */
 
-   Estratégia: desktop-first com sobrescrita — o CSS acima já é o
-   layout padrão (desktop); as regras abaixo entram em vigor conforme
-   a tela fica menor, ajustando o que precisa mudar.
-
-   Breakpoint 1 — Tablet (até 900px): reduz espaçamentos, encolhe a
-   ilustração das telas de login/cadastro e o banner do perfil,
-   reorganiza os grids de cards.
-
-   Breakpoint 2 — Smartphone (até 600px): empilha o cabeçalho, os
-   botões de ação e a barra de busca; os grids de perfil/obras caem
-   para 1 coluna; os cards de avaliação/perfil empilham o avatar
-   sobre o texto; reduz a tipografia principal.
-   =================================================================== */
-
-/* ---------- Breakpoint 1: Tablet (até 900px) ---------- */
+/* ---------- Breakpoint 1 */
+/* RESPONSIVIDADE ATÉ 900px */
 @media (max-width: 900px) {
+  /* CONTÊINER GERAL */
   .wrap {
     padding: 0 1.1rem;
   }
 
+  /* LOGIN / CADASTRO */
   .auth-layout {
     gap: 1.5rem;
   }
 
+  /* ILUSTRAÇÃO DO LOGIN / CADASTRO */
   .auth-ilustracao {
     max-width: 220px;
   }
 
+  /* CAPA DO PERFIL */
   .perfil-banner {
     height: 150px;
   }
 
   .grid-perfis,
+  /* GRADE DE OBRAS AUTORAIS */
   .grid-obras {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 
+  /* ESTATÍSTICAS DO PERFIL */
   .stat-cards {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* ---------- Breakpoint 2: Smartphone (até 600px) ---------- */
+/* ---------- Breakpoint 2 */
+/* RESPONSIVIDADE ATÉ 600px */
 @media (max-width: 600px) {
+  /* TÍTULO PRINCIPAL */
   h1 {
     font-size: 1.8rem;
   }
 
+  /* CABEÇALHO INTEIRO */
   .site-header .wrap {
     flex-wrap: wrap;
     row-gap: 0.6rem;
@@ -788,19 +823,23 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
     flex: 0 1 auto;
   }
 
+  /* MENU AVALIAÇÕES / DESCOBRIR */
   nav.primary-nav ul {
     gap: 1rem;
   }
 
+  /* ENTRAR / CADASTRAR */
   .header-actions {
     flex: 0 1 auto;
     justify-content: flex-end;
   }
 
+  /* TEXTO E CARTÕES DA APRESENTAÇÃO */
   .hero .wrap {
     flex-direction: column;
   }
 
+  /* BOTÕES CRIAR MEU PERFIL / VER AVALIAÇÕES */
   .hero-acoes {
     flex-direction: column;
     align-items: stretch;
@@ -810,25 +849,30 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
     text-align: center;
   }
 
+  /* LOGIN / CADASTRO */
   .auth-layout {
     flex-direction: column;
   }
 
+  /* ILUSTRAÇÃO DO LOGIN / CADASTRO */
   .auth-ilustracao {
     max-width: 160px;
     order: -1;
   }
 
+  /* ÁREA DO FORMULÁRIO DE LOGIN / CADASTRO */
   .auth-formulario {
     max-width: 100%;
   }
 
   form.card-form,
+  /* FORMULÁRIO LARGO (AVALIAÇÃO, EDIÇÃO, OBRA) */
   form.card-form.wide {
     max-width: 100%;
     padding: 1.25rem;
   }
 
+  /* ENVIO / CANCELAR DOS FORMULÁRIOS */
   .acoes-form {
     flex-direction: column;
     align-items: stretch;
@@ -839,6 +883,7 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
     margin: 0 0 0.5rem 0;
   }
 
+  /* CAMPO E BOTÃO BUSCAR */
   form.busca-bar {
     flex-direction: column;
   }
@@ -848,10 +893,12 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
   }
 
   .grid-perfis,
+  /* GRADE DE OBRAS AUTORAIS */
   .grid-obras {
     grid-template-columns: 1fr;
   }
 
+  /* ESTATÍSTICAS DO PERFIL */
   .stat-cards {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
@@ -870,6 +917,7 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
     align-items: flex-start;
   }
 
+  /* AVATAR DO PERFIL */
   .perfil-avatar-quadrado {
     position: static;
     width: 64px;
@@ -878,6 +926,7 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
     margin: -32px 0 0.8rem 1rem;
   }
 
+  /* EDITAR PERFIL / COMPARTILHAR */
   .perfil-acoes {
     flex-direction: column;
     align-items: stretch;
@@ -890,6 +939,7 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
   }
 
   article.avaliacao-card,
+  /* CADA CARTÃO DE LEITOR */
   article.perfil-card {
     flex-direction: column;
     align-items: flex-start;
@@ -899,4 +949,90 @@ footer.site-footer .wrap { display: flex; justify-content: space-between; flex-w
   .tags-mini {
     gap: 0.4rem;
   }
+}
+
+/* INTERATIVIDADE */
+
+/* --- Seleção de nota por estrelas (avaliacao.html) --- */
+/* GRUPO DE ESTRELAS */
+.nota-estrelas {
+  display: flex;
+  gap: 0.3rem;
+  font-size: 1.8rem;
+}
+
+/* BOTÕES DE ESTRELA */
+.nota-estrelas .estrela {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: var(--line);
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.nota-estrelas .estrela:hover,
+.nota-estrelas .estrela:focus-visible {
+  transform: scale(1.12);
+}
+
+/* ESTRELA SELECIONADA */
+.nota-estrelas .estrela.preenchida {
+  color: var(--green);
+}
+
+.nota-estrelas .estrela:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 2px;
+}
+
+#nota-texto {
+  font-size: 0.9rem;
+  color: var(--maroon-soft);
+  margin: 0.4rem 0 0 0;
+}
+
+/* --- Validação de formulários (criar-conta, entrar, avaliacao) --- */
+.campo-invalido input,
+.campo-invalido textarea,
+.campo-invalido select {
+  border-color: #B3261E;
+  background: #FBEAEA;
+}
+
+/* MENSAGEM DE ERRO */
+.erro-campo {
+  color: #B3261E;
+  font-size: 0.82rem;
+  margin: 0.3rem 0 0 0;
+  font-weight: 600;
+}
+
+/* MENSAGEM DE SUCESSO */
+.mensagem-sucesso {
+  background: var(--green-light);
+  color: var(--maroon);
+  border: 2px solid var(--green);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.1rem;
+  font-weight: 600;
+}
+
+/* --- Busca dinâmica de perfis (busca.html) --- */
+#sem-resultados {
+  background: var(--cream);
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--maroon-soft);
+  margin-top: 1rem;
+}
+
+/* ELEMENTOS OCULTOS */
+/* ELEMENTOS OCULTOS */
+[hidden] {
+  display: none !important;
 }

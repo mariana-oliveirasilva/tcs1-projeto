@@ -63,23 +63,26 @@
             <a href="criar-conta.html" aria-current="true">Criar conta</a>
           </nav>
 
-          <form class="card-form" action="#" method="post">
-            <div class="campo">
+          <p id="mensagem-sucesso-cadastro" class="mensagem-sucesso" hidden>Conta criada com sucesso! Agora você já pode entrar.</p>
+
+          <form class="card-form" id="form-criar-conta" action="#" method="post" novalidate>
+            <div class="campo" id="campo-cad-nome">
               <label for="cad-nome">Nome de exibição</label>
               <input type="text" id="cad-nome" name="nome" required autocomplete="name">
             </div>
-            <div class="campo">
+            <div class="campo" id="campo-cad-usuario">
               <label for="cad-usuario">Nome de usuário</label>
               <input type="text" id="cad-usuario" name="usuario" required autocomplete="username">
               <p class="campo-ajuda">Será usado no seu perfil, ex: @anaclara</p>
             </div>
-            <div class="campo">
+            <div class="campo" id="campo-cad-email">
               <label for="cad-email">E-mail</label>
               <input type="email" id="cad-email" name="email" required autocomplete="email">
             </div>
-            <div class="campo">
+            <div class="campo" id="campo-cad-senha">
               <label for="cad-senha">Senha</label>
               <input type="password" id="cad-senha" name="senha" required autocomplete="new-password">
+              <p class="campo-ajuda">Mínimo de 6 caracteres.</p>
             </div>
             <button type="submit">Criar minha conta</button>
           </form>
@@ -100,5 +103,6 @@
     </div>
   </footer>
 
+  <script src="../js/script.js"></script>
 </body>
 </html>

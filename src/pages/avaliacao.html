@@ -32,12 +32,14 @@
       </h1>
       <p class="lede">Registre o que você leu, dê uma nota e conte sua impressão.</p>
 
-      <form class="card-form wide" action="#" method="post">
+      <p id="mensagem-sucesso-avaliacao" class="mensagem-sucesso" hidden>Avaliação publicada com sucesso!</p>
+
+      <form class="card-form wide" id="form-avaliacao" action="#" method="post" novalidate>
 
         <fieldset>
           <legend>Sobre a obra</legend>
 
-          <div class="campo">
+          <div class="campo" id="campo-obra">
             <label for="obra">Título da obra</label>
             <input type="text" id="obra" name="obra" required list="obras-sugeridas" placeholder="Ex: Berserk, 1984...">
             <datalist id="obras-sugeridas">
@@ -48,7 +50,7 @@
             </datalist>
           </div>
 
-          <div class="campo">
+          <div class="campo" id="campo-tipo-obra">
             <label for="tipo-obra">Tipo</label>
             <select id="tipo-obra" name="tipo-obra" required>
               <option value="">Selecione...</option>
@@ -64,15 +66,18 @@
           <div class="campo">
             <span id="rotulo-nota">Nota</span>
             <div class="nota-estrelas" role="radiogroup" aria-labelledby="rotulo-nota">
-              <label><input type="radio" name="nota" value="1"> ★</label>
-              <label><input type="radio" name="nota" value="2"> ★★</label>
-              <label><input type="radio" name="nota" value="3"> ★★★</label>
-              <label><input type="radio" name="nota" value="4"> ★★★★</label>
-              <label><input type="radio" name="nota" value="5"> ★★★★★</label>
+              <button type="button" class="estrela" data-valor="1" aria-label="1 estrela">★</button>
+              <button type="button" class="estrela" data-valor="2" aria-label="2 estrelas">★</button>
+              <button type="button" class="estrela" data-valor="3" aria-label="3 estrelas">★</button>
+              <button type="button" class="estrela" data-valor="4" aria-label="4 estrelas">★</button>
+              <button type="button" class="estrela" data-valor="5" aria-label="5 estrelas">★</button>
             </div>
+            <input type="hidden" id="nota-valor" name="nota" value="">
+            <p id="nota-texto">Nenhuma nota selecionada ainda.</p>
+            <p id="erro-nota" class="erro-campo" hidden>Selecione uma nota de 1 a 5 estrelas.</p>
           </div>
 
-          <div class="campo">
+          <div class="campo" id="campo-comentario">
             <label for="comentario">Comentário</label>
             <textarea id="comentario" name="comentario" required placeholder="O que você achou dessa obra?"></textarea>
           </div>
@@ -95,5 +100,6 @@
     </div>
   </footer>
 
+  <script src="../js/script.js"></script>
 </body>
 </html>

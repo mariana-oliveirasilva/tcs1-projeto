@@ -68,12 +68,14 @@
             <a href="criar-conta.html">Criar conta</a>
           </nav>
 
-          <form class="card-form" action="#" method="post">
-            <div class="campo">
+          <p id="mensagem-sucesso-login" class="mensagem-sucesso" hidden>Login realizado com sucesso!</p>
+
+          <form class="card-form" id="form-entrar" action="#" method="post" novalidate>
+            <div class="campo" id="campo-login-email">
               <label for="login-email">E-mail</label>
               <input type="email" id="login-email" name="email" required autocomplete="email">
             </div>
-            <div class="campo">
+            <div class="campo" id="campo-login-senha">
               <label for="login-senha">Senha</label>
               <input type="password" id="login-senha" name="senha" required autocomplete="current-password">
             </div>
@@ -99,5 +101,6 @@
     </div>
   </footer>
 
+  <script src="../js/script.js"></script>
 </body>
 </html>
