@@ -32,7 +32,7 @@
       </h1>
       <p class="lede">Registre o que você leu, dê uma nota e conte sua impressão.</p>
 
-      <p id="mensagem-sucesso-avaliacao" class="mensagem-sucesso" hidden>Avaliação publicada com sucesso!</p>
+      <p id="mensagem-sucesso-avaliacao" class="mensagem-sucesso" role="status" hidden>Avaliação publicada com sucesso!</p>
 
       <form class="card-form wide" id="form-avaliacao" action="#" method="post" novalidate>
 
@@ -41,13 +41,10 @@
 
           <div class="campo" id="campo-obra">
             <label for="obra">Título da obra</label>
-            <input type="text" id="obra" name="obra" required list="obras-sugeridas" placeholder="Ex: Berserk, 1984...">
-            <datalist id="obras-sugeridas">
-              <option value="Berserk">
-              <option value="Vagabond">
-              <option value="1984">
-              <option value="Cem Anos de Solidão">
-            </datalist>
+            <input type="text" id="obra" name="obra" required autocomplete="off" placeholder="Ex: Berserk, 1984...">
+            <p class="campo-ajuda">Digite ao menos 3 letras para ver sugestões da Open Library.</p>
+            <p id="sugestoes-status" class="sugestoes-status" role="status" hidden></p>
+            <ul id="sugestoes-obras" class="sugestoes" aria-label="Sugestões de obras"></ul>
           </div>
 
           <div class="campo" id="campo-tipo-obra">
@@ -65,7 +62,7 @@
 
           <div class="campo">
             <span id="rotulo-nota">Nota</span>
-            <div class="nota-estrelas" role="radiogroup" aria-labelledby="rotulo-nota">
+            <div class="nota-estrelas" role="group" aria-labelledby="rotulo-nota">
               <button type="button" class="estrela" data-valor="1" aria-label="1 estrela">★</button>
               <button type="button" class="estrela" data-valor="2" aria-label="2 estrelas">★</button>
               <button type="button" class="estrela" data-valor="3" aria-label="3 estrelas">★</button>
@@ -74,7 +71,7 @@
             </div>
             <input type="hidden" id="nota-valor" name="nota" value="">
             <p id="nota-texto">Nenhuma nota selecionada ainda.</p>
-            <p id="erro-nota" class="erro-campo" hidden>Selecione uma nota de 1 a 5 estrelas.</p>
+            <p id="erro-nota" class="erro-campo" role="alert" hidden>Selecione uma nota de 1 a 5 estrelas.</p>
           </div>
 
           <div class="campo" id="campo-comentario">
@@ -82,6 +79,9 @@
             <textarea id="comentario" name="comentario" required placeholder="O que você achou dessa obra?"></textarea>
           </div>
         </fieldset>
+
+        <p id="status-envio" class="status-carregando" role="status" hidden>Enviando sua avaliação...</p>
+        <p id="erro-envio" class="erro-envio" role="alert" hidden></p>
 
         <div class="acoes-form">
           <button type="submit">Publicar avaliação</button>
@@ -100,6 +100,6 @@
     </div>
   </footer>
 
-  <script src="../js/script.js"></script>
+  <script type="module" src="../js/main.js"></script>
 </body>
 </html>
