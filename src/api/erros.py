@@ -12,6 +12,8 @@ sai neste formato JSON, para o cliente tratar sempre do mesmo jeito:
       }
     }
 """
+import sqlite3
+
 from flask import jsonify
 from werkzeug.exceptions import HTTPException
 
@@ -52,6 +54,11 @@ def registrar_handlers(app):
         if erro.code == 405 and getattr(erro, "valid_methods", None):
             resposta.headers["Allow"] = ", ".join(erro.valid_methods)
         return resposta, status
+
+    @app.errorhandler(sqlite3.Error)
+    def tratar_erro_persistencia(erro):
+        app.logger.exception("Falha de persistência: %s", erro)
+        return resposta_erro(500, "erro_persistencia", "Falha ao acessar o banco de dados.")
 
     @app.errorhandler(Exception)
     def tratar_erro_inesperado(erro):

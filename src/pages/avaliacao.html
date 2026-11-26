@@ -13,7 +13,7 @@
       <p class="brand"><svg class="logo-icone" viewBox="0 0 48 44" width="30" height="30" aria-hidden="true"><g transform="rotate(-2 24 34)"><rect x="4" y="30" width="40" height="8" rx="3" fill="#A9C77A"/></g><g transform="rotate(1.5 24 25)"><rect x="8" y="21" width="32" height="7" rx="3" fill="#E9A9BE"/></g><g transform="translate(9 3)"><path d="M15 2 L15 20 Q8 17 1 20 L1 4 Q8 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/><path d="M15 2 L15 20 Q22 17 29 20 L29 4 Q22 1 15 2 Z" fill="#FBF3E7" stroke="#4B2318" stroke-width="1.6" stroke-linejoin="round"/></g><path d="M40 4l1.6 4L46 9.6l-4.4 1.6L40 15l-1.6-4.4L34 9.6l4.4-1.6Z" fill="#5E7A32"/><path d="M4 18l1.2 3L8 22.2l-2.8 1L4 26l-1.2-2.8L0 22.2l2.8-1Z" fill="#4B2318"/></svg><span class="ink">Ink</span><span class="circle">Circle</span></p>
       <nav class="primary-nav" aria-label="Navegação principal">
         <ul>
-          <li><a href="index.html" aria-current="page">Avaliações</a></li>
+          <li><a href="index.html">Avaliações</a></li>
           <li><a href="busca.html">Descobrir</a></li>
         </ul>
       </nav>
@@ -28,13 +28,15 @@
 
       <h1 style="display:flex; align-items:center; gap:0.6rem;">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B2318" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-6 0-14 4-16 14 8 0 14-6 16-14Z"/><line x1="4" y1="20" x2="12" y2="12"/></svg>
-        Publicar avaliação
+        <span id="titulo-form-avaliacao">Publicar avaliação</span>
       </h1>
       <p class="lede">Registre o que você leu, dê uma nota e conte sua impressão.</p>
 
       <p id="mensagem-sucesso-avaliacao" class="mensagem-sucesso" role="status" hidden>Avaliação publicada com sucesso!</p>
 
-      <form class="card-form wide" id="form-avaliacao" action="#" method="post" novalidate>
+      <p id="erro-envio" class="erro-envio" role="alert" hidden></p>
+      <p id="aviso-login-avaliacao" hidden><a href="entrar.html">Entre na sua conta</a> para publicar no seu perfil.</p>
+        <form class="card-form wide" id="form-avaliacao" hidden action="#" method="post" novalidate>
 
         <fieldset>
           <legend>Sobre a obra</legend>
@@ -81,7 +83,6 @@
         </fieldset>
 
         <p id="status-envio" class="status-carregando" role="status" hidden>Enviando sua avaliação...</p>
-        <p id="erro-envio" class="erro-envio" role="alert" hidden></p>
 
         <div class="acoes-form">
           <button type="submit">Publicar avaliação</button>

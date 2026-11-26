@@ -34,7 +34,7 @@
           leitores com gostos tão específicos quanto os seus.
         </p>
         <div class="hero-acoes">
-          <a href="criar-conta.html" class="botao">Criar meu perfil</a>
+          <a id="cta-perfil" href="criar-conta.html" class="botao">Criar meu perfil</a>
           <a href="avaliacao.html" class="botao">Publicar avaliação</a>
           <a href="#feed" class="botao secundario">Ver avaliações</a>
         </div>
@@ -89,46 +89,8 @@
           Avaliações recentes
         </h2>
         <hr class="divisor-ondulado" aria-hidden="true">
-        <div class="feed">
-
-          <article class="avaliacao-card">
-            <div class="avatar-placeholder">AC</div>
-            <div class="info">
-              <header>
-                <span class="obra">Vagabond</span>
-                <span class="badge manga">Mangá</span>
-                <span class="autor-avaliacao">por Ana Clara</span>
-              </header>
-              <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
-            </div>
-          </article>
-
-          <article class="avaliacao-card destaque-2">
-            <div class="avatar-placeholder alt">MF</div>
-            <div class="info">
-              <header>
-                <span class="obra">Cem Anos de Solidão</span>
-                <span class="badge livro">Livro</span>
-                <span class="autor-avaliacao">por Marcelo Ferreira</span>
-              </header>
-              <p class="estrelas" aria-label="4 de 5 estrelas">★★★★☆</p>
-            </div>
-          </article>
-
-          <article class="avaliacao-card destaque-3">
-            <div class="avatar-placeholder alt2">RP</div>
-            <div class="info">
-              <header>
-                <span class="obra">Berserk</span>
-                <span class="badge manga">Mangá</span>
-                <span class="badge autoral">Obra autoral</span>
-                <span class="autor-avaliacao">por Renata Prado</span>
-              </header>
-              <p class="estrelas" aria-label="5 de 5 estrelas">★★★★★</p>
-            </div>
-          </article>
-
-        </div>
+        <p id="estado-feed" role="status">Carregando avaliações…</p>
+        <div class="feed" id="lista-feed"></div>
       </section>
 
     </div>
@@ -137,9 +99,9 @@
   <footer class="site-footer">
     <div class="wrap">
       <p><span class="ink">Ink</span><span class="circle">Circle</span> — projeto da disciplina TCS1</p>
-      <p><a href="../docs/etapa02.md">Sobre este protótipo</a></p>
     </div>
   </footer>
 
+  <script type="module" src="../js/main.js"></script>
 </body>
 </html>

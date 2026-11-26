@@ -7,6 +7,7 @@ Executar (dentro da pasta src/api):
 A API sobe em http://127.0.0.1:5000
 """
 import os
+import sqlite3
 
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -60,4 +61,8 @@ def create_app(caminho_db=None, popular=False):
 
 if __name__ == "__main__":
     porta = int(os.environ.get("PORT", 5000))
-    create_app(popular=True).run(host="127.0.0.1", port=porta, debug=True)
+    try:
+        app = create_app(popular=True)
+    except sqlite3.Error as erro:
+        raise SystemExit(f"Não foi possível inicializar o SQLite: {erro}") from erro
+    app.run(host="127.0.0.1", port=porta, debug=True)

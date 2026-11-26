@@ -1,5 +1,7 @@
 # InkCircle — PROPOSTA E ESPECIFICAÇÃO DO PROJETO
 
+> Proposta inicial da disciplina. A arquitetura adotada na entrega das etapas 6 e 7 está descrita em [Arquitetura do InkCircle](arquitetura.md).
+
 ## Nome da aplicação
 InkCircle
 

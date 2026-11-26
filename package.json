@@ -1,0 +1,20 @@
+{
+  "name": "inkcircle",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "db:init": "node --env-file-if-exists=.env server/init-db.js",
+    "test": "node --test test/*.test.js",
+    "test:mysql": "node --env-file-if-exists=.env --test integration/mysql.test.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0",
+    "cookie-parser": "^1.4.7"
+  }
+}

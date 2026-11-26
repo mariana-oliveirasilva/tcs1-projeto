@@ -12,7 +12,7 @@ Todas as rotas deste arquivo ficam sob o prefixo /api/avaliacoes:
 """
 from flask import Blueprint, Response, jsonify, request, url_for
 
-from database import agora, get_db
+import repositorio_avaliacoes as repositorio
 from erros import ErroAPI
 from validacao import TIPOS_VALIDOS, validar_avaliacao
 
@@ -21,11 +21,10 @@ bp = Blueprint("avaliacoes", __name__, url_prefix="/api/avaliacoes")
 
 # ----------------------------- funções auxiliares -----------------------------
 
-def buscar_ou_404(id):
-    linha = get_db().execute("SELECT * FROM avaliacoes WHERE id = ?", (id,)).fetchone()
-    if linha is None:
+def exigir_avaliacao(avaliacao, id):
+    if avaliacao is None:
         raise ErroAPI(404, "nao_encontrado", f"Avaliação {id} não encontrada.")
-    return linha
+    return avaliacao
 
 
 def ler_json_obrigatorio():
@@ -44,97 +43,57 @@ def ler_json_obrigatorio():
     return dados
 
 
-def escapar_like(texto):
-    """Faz % e _ digitados pelo usuário valerem como texto comum na busca (LIKE)."""
-    return texto.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+def ler_avaliacao(parcial=False):
+    valores, erros = validar_avaliacao(ler_json_obrigatorio(), parcial=parcial)
+    if erros:
+        raise ErroAPI(422, "validacao", "Os dados enviados são inválidos.", erros)
+    return valores
 
 
 def atualizar(id, parcial):
-    """Lógica compartilhada por PUT (parcial=False) e PATCH (parcial=True)."""
-    buscar_ou_404(id)
-    dados = ler_json_obrigatorio()
+    exigir_avaliacao(repositorio.buscar(id), id)
+    valores = ler_avaliacao(parcial=parcial)
+    return jsonify(exigir_avaliacao(repositorio.atualizar(id, valores), id))
 
-    valores, erros = validar_avaliacao(dados, parcial=parcial)
-    if erros:
-        raise ErroAPI(422, "validacao", "Os dados enviados são inválidos.", erros)
-
-    # os nomes das colunas vêm de `valores`, que só contém campos da lista fixa
-    # CAMPOS (validada acima); os valores em si vão como parâmetros (?)
-    colunas = ", ".join(f"{campo} = ?" for campo in valores)
-    parametros = list(valores.values()) + [agora(), id]
-
-    db = get_db()
-    db.execute(f"UPDATE avaliacoes SET {colunas}, atualizada_em = ? WHERE id = ?", parametros)
-    db.commit()
-    return jsonify(dict(buscar_ou_404(id)))
-
-
-# ---------------------------------- rotas ----------------------------------
 
 @bp.get("")
 def listar():
-    """Lista avaliações, da mais recente para a mais antiga. Filtros: tipo, nota, q."""
-    filtros, parametros, erros = [], [], {}
-
+    """Lista avaliações, da mais recente para a mais antiga."""
+    erros = {}
     tipo = request.args.get("tipo")
     if tipo is not None:
         tipo = tipo.strip().lower()
-        if tipo in TIPOS_VALIDOS:
-            filtros.append("tipo = ?")
-            parametros.append(tipo)
-        else:
+        if tipo not in TIPOS_VALIDOS:
             erros["tipo"] = "Deve ser 'livro' ou 'manga'."
 
     nota = request.args.get("nota")
     if nota is not None:
-        if nota.isdigit() and 1 <= int(nota) <= 5:
-            filtros.append("nota = ?")
-            parametros.append(int(nota))
-        else:
+        try:
+            nota = int(nota) if nota.isdecimal() else None
+        except ValueError:
+            nota = None
+        if nota is None or not 1 <= nota <= 5:
             erros["nota"] = "Deve ser um número inteiro de 1 a 5."
-
-    busca = request.args.get("q", "").strip()
-    if busca:
-        filtros.append("obra LIKE ? ESCAPE '\\'")
-        parametros.append(f"%{escapar_like(busca)}%")
 
     if erros:
         raise ErroAPI(422, "parametros_invalidos", "Parâmetros de consulta inválidos.", erros)
 
-    sql = "SELECT * FROM avaliacoes"
-    if filtros:
-        sql += " WHERE " + " AND ".join(filtros)
-    sql += " ORDER BY id DESC"
-
-    linhas = get_db().execute(sql, parametros).fetchall()
-    return jsonify({"total": len(linhas), "avaliacoes": [dict(l) for l in linhas]})
+    busca = request.args.get("q", "").strip()
+    avaliacoes = repositorio.listar(tipo, nota, busca)
+    return jsonify({"total": len(avaliacoes), "avaliacoes": avaliacoes})
 
 
 @bp.get("/<int:id>")
 def obter(id):
     """Consulta individual."""
-    return jsonify(dict(buscar_ou_404(id)))
+    return jsonify(exigir_avaliacao(repositorio.buscar(id), id))
 
 
 @bp.post("")
 def criar():
     """Cria uma avaliação. Responde 201 Created com o cabeçalho Location."""
-    dados = ler_json_obrigatorio()
-
-    valores, erros = validar_avaliacao(dados)
-    if erros:
-        raise ErroAPI(422, "validacao", "Os dados enviados são inválidos.", erros)
-
-    db = get_db()
-    cursor = db.execute(
-        "INSERT INTO avaliacoes (obra, tipo, nota, comentario, criada_em) "
-        "VALUES (?, ?, ?, ?, ?)",
-        (valores["obra"], valores["tipo"], valores["nota"], valores["comentario"], agora()),
-    )
-    db.commit()
-
-    nova = buscar_ou_404(cursor.lastrowid)
-    resposta = jsonify(dict(nova))
+    nova = repositorio.criar(ler_avaliacao())
+    resposta = jsonify(nova)
     resposta.status_code = 201
     resposta.headers["Location"] = url_for("avaliacoes.obter", id=nova["id"])
     return resposta
@@ -155,10 +114,8 @@ def alterar(id):
 @bp.delete("/<int:id>")
 def excluir(id):
     """Exclui. Responde 204 No Content (sem corpo)."""
-    buscar_ou_404(id)
-    db = get_db()
-    db.execute("DELETE FROM avaliacoes WHERE id = ?", (id,))
-    db.commit()
+    if not repositorio.excluir(id):
+        exigir_avaliacao(None, id)
     resposta = Response(status=204)          # 204 = sem corpo
     resposta.headers.pop("Content-Type", None)  # e, portanto, sem Content-Type
     return resposta

@@ -1,0 +1,3 @@
+# arquivos gerados ao rodar o pytest
+__pycache__/
+*.pyc

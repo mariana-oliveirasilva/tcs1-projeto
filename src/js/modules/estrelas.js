@@ -31,15 +31,16 @@ export function initEstrelas() {
       : valor + ' de 5 estrelas selecionadas.';
   }
 
+  function selecionar(valor) {
+    notaSelecionada = valor;
+    inputNota.value = valor || '';
+    pintar(valor);
+    atualizarTexto(valor);
+    if (erroNota) erroNota.hidden = true;
+  }
+
   botoes.forEach(function (botao) {
-    // clique = escolhe a nota de verdade
-    botao.addEventListener('click', function () {
-      notaSelecionada = Number(botao.dataset.valor);
-      inputNota.value = notaSelecionada;
-      pintar(notaSelecionada);
-      atualizarTexto(notaSelecionada);
-      if (erroNota) erroNota.hidden = true;
-    });
+    botao.addEventListener('click', () => selecionar(Number(botao.dataset.valor)));
 
     // mouse por cima = pré-visualização (não altera a nota salva)
     botao.addEventListener('mouseenter', function () {
@@ -59,11 +60,7 @@ export function initEstrelas() {
     foiSelecionada: function () {
       return notaSelecionada > 0;
     },
-    resetar: function () {
-      notaSelecionada = 0;
-      inputNota.value = '';
-      pintar(0);
-      atualizarTexto(0);
-    }
+    selecionar,
+    resetar: () => selecionar(0)
   };
 }

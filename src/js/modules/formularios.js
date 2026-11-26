@@ -7,9 +7,10 @@
    =================================================================== */
 
 import {
-  campoVazio, emailValido, senhaValida, usuarioDisponivel, comentarioValido
+  campoVazio, emailValido, senhaValida, comentarioValido
 } from './validacao.js';
 import { mostrar, esconder, mostrarErro, limparErro } from './ui.js';
+import { chamarApi, sessaoAtual } from '../services/api.js';
 import { enviarAvaliacao } from '../services/avaliacoesService.js';
 
 /**
@@ -36,8 +37,9 @@ export function initFormularioCadastro() {
   if (!form) return;
 
   const sucesso = document.querySelector('#mensagem-sucesso-cadastro');
+  const erro = document.querySelector('#erro-cadastro');
 
-  form.addEventListener('submit', function (evento) {
+  form.addEventListener('submit', async function (evento) {
     evento.preventDefault();
 
     // o array é montado por inteiro (todos os campos são validados),
@@ -47,8 +49,7 @@ export function initFormularioCadastro() {
         [campoVazio, 'Informe seu nome de exibição.']
       ]),
       validarCampo('campo-cad-usuario', form.usuario.value, [
-        [campoVazio, 'Informe um nome de usuário.'],
-        [function (v) { return !usuarioDisponivel(v); }, 'Esse nome de usuário já está em uso. Tente outro.']
+        [campoVazio, 'Informe um nome de usuário.']
       ]),
       validarCampo('campo-cad-email', form.email.value, [
         [campoVazio, 'Informe seu e-mail.'],
@@ -60,11 +61,26 @@ export function initFormularioCadastro() {
       ])
     ];
 
-    if (resultados.every(Boolean)) {
+    esconder(sucesso);
+    esconder(erro);
+    if (!resultados.every(Boolean)) return;
+
+    const botao = form.querySelector('[type="submit"]');
+    botao.disabled = true;
+    try {
+      await chamarApi('/contas', { metodo: 'POST', dados: {
+        nome: form.nome.value,
+        usuario: form.usuario.value,
+        email: form.email.value,
+        senha: form.senha.value
+      } });
       mostrar(sucesso);
       form.reset();
-    } else {
-      esconder(sucesso);
+    } catch (falha) {
+      erro.textContent = falha.message;
+      mostrar(erro);
+    } finally {
+      botao.disabled = false;
     }
   });
 }
@@ -74,9 +90,9 @@ export function initFormularioLogin() {
   const form = document.querySelector('#form-entrar');
   if (!form) return;
 
-  const sucesso = document.querySelector('#mensagem-sucesso-login');
+  const erro = document.querySelector('#erro-login');
 
-  form.addEventListener('submit', function (evento) {
+  form.addEventListener('submit', async function (evento) {
     evento.preventDefault();
 
     const resultados = [
@@ -89,17 +105,28 @@ export function initFormularioLogin() {
       ])
     ];
 
-    if (resultados.every(Boolean)) {
-      mostrar(sucesso);
-      form.reset();
-    } else {
-      esconder(sucesso);
+    esconder(erro);
+    if (!resultados.every(Boolean)) return;
+
+    const botao = form.querySelector('[type="submit"]');
+    botao.disabled = true;
+    try {
+      await chamarApi('/sessao', { metodo: 'POST', dados: {
+        email: form.email.value,
+        senha: form.senha.value
+      } });
+      window.location.assign('perfil.html');
+    } catch (falha) {
+      erro.textContent = falha.message;
+      mostrar(erro);
+    } finally {
+      botao.disabled = false;
     }
   });
 }
 
 /* ----------------------- publicar avaliação (async) ------------------- */
-export function initFormularioAvaliacao(estrelas) {
+export async function initFormularioAvaliacao(estrelas) {
   const form = document.querySelector('#form-avaliacao');
   if (!form) return;
 
@@ -108,8 +135,34 @@ export function initFormularioAvaliacao(estrelas) {
   const statusEnvio = document.querySelector('#status-envio');
   const erroEnvio = document.querySelector('#erro-envio');
   const botaoEnviar = form.querySelector('button[type="submit"]');
-  const textoOriginalBotao = botaoEnviar.textContent;
 
+  const avisoLogin = document.querySelector('#aviso-login-avaliacao');
+  const id = new URLSearchParams(window.location.search).get('editar');
+  form.hidden = true;
+  try {
+    const usuario = await sessaoAtual();
+    if (!usuario) {
+      avisoLogin.hidden = false;
+      return;
+    }
+    if (id !== null) {
+      const atual = await chamarApi('/avaliacoes/' + encodeURIComponent(id));
+      if (atual.autor_id !== usuario.id) throw new Error('Somente o autor pode editar esta avaliação.');
+      document.querySelector('#titulo-form-avaliacao').textContent = 'Editar avaliação';
+      form.obra.value = atual.obra;
+      form['tipo-obra'].value = atual.tipo;
+      form.comentario.value = atual.comentario;
+      estrelas.selecionar(atual.nota);
+      botaoEnviar.textContent = 'Salvar alterações';
+    }
+    form.hidden = false;
+  } catch (erro) {
+    erroEnvio.textContent = erro.message;
+    mostrar(erroEnvio);
+    return;
+  }
+
+  const textoOriginalBotao = botaoEnviar.textContent;
   let enviando = false;
 
   // Liga/desliga o estado de CARREGAMENTO do formulário
@@ -156,7 +209,11 @@ export function initFormularioAvaliacao(estrelas) {
 
     definirEnviando(true); // CARREGANDO
     try {
-      const salva = await enviarAvaliacao(avaliacao); // aguarda o "servidor"
+      const salva = await enviarAvaliacao(avaliacao, id);
+      if (id !== null) {
+        window.location.assign('perfil.html');
+        return;
+      }
 
       // SUCESSO
       sucesso.textContent = 'Avaliação de "' + salva.obra + '" publicada com sucesso!';
@@ -169,6 +226,7 @@ export function initFormularioAvaliacao(estrelas) {
       erroEnvio.textContent =
         'Não foi possível publicar sua avaliação. ' + erro.message + ' Tente novamente.';
       mostrar(erroEnvio);
+      if (erro.status === 401) avisoLogin.hidden = false;
     } finally {
       // roda sempre, com sucesso ou erro: desliga o "carregando"
       definirEnviando(false);
